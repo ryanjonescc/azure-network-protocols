@@ -3,8 +3,7 @@
 </p>
 
 <h1>Network Security Groups (NSGs) and Inspecting Traffic Between Azure Virtual Machines</h1>
-In this tutorial, we observe various network traffic to and from Azure Virtual Machines with Wireshark as well as experiment with Network Security Groups. <br />
-
+This tutorial explores network traffic to and from Azure Virtual Machines using Wireshark while also experimenting with Network Security Groups.
 
 
 
@@ -26,8 +25,9 @@ In this tutorial, we observe various network traffic to and from Azure Virtual M
 <p>
 </p>
 <p>
-Welcome to my tutorial on Network Security Groups and Inspecting Network Protocols. First you will need to create two VMs on Azure. One machine will be a Linux machine and the other will be a Windows 10 machine. Both will have two cpus and they must be on the same VNET. Once that is done go on the Windows machine and download Wireshark. I will attatch a link to the wireshark download. https://www.wireshark.org/download.html Once installed open Wireshark and filter for ICMP Traffic only. ICMP is a network layer protocol that relays messages concerning network connection issues. Ping uses this protocol, ping tests connectivity between hosts. When we filter wirehsark to only capture ICMP packets and ping the private IP address of our linux machine we can visually see the packets on wireshark. 
-</p>
+Welcome to this tutorial on Network Security Groups and Network Protocol Inspection. To begin, create two virtual machines (VMs) on Azure—one running Linux and the other running Windows 10. Both VMs should have two CPUs and be on the same virtual network (VNET).  
+
+Next, download and install Wireshark on the Windows machine using the following link: [Wireshark Download](https://www.wireshark.org/download.html). Once installed, open Wireshark and set a filter for ICMP traffic. ICMP is a network layer protocol used to relay messages about network connection issues, and it is the protocol used by the ping command to test connectivity between hosts. By filtering Wireshark to capture only ICMP packets and pinging the private IP address of the Linux machine, you can visually observe the packet exchange in Wireshark.</p>
 <br />
 <p>
 <img src="https://i.imgur.com/IIUShxp.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
@@ -40,8 +40,9 @@ We can inspect each individual packet and see the actual data that is being sent
 <img src="https://i.imgur.com/GLxSIG3.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-In the next portion of the lab we will perpetually ping the Linux machine with the command ping -t. This will continually ping the machine until we decide to stop it, while the Windows machine is pinging the Linux machine we will go to the Linux machine and block inbound ICMP traffic on it's firewall. Once we do that we will stop recieving echo replys from the Linux machine. We will block ICMP by creating a new Network Security Group on the Linux machine that will be set to block ICMP. We can allow the traffic by allowing ICMP on the Linux Network Security Groups page on Azure. 
-</p>
+In the next part of the lab, we will continuously ping the Linux machine using the `ping -t` command. This will send repeated ping requests until manually stopped. While the Windows machine is actively pinging the Linux machine, we will configure the Linux firewall to block inbound ICMP traffic. Once this rule is applied, the Windows machine will stop receiving echo replies from the Linux machine.  
+
+To block ICMP traffic, we will create a new Network Security Group (NSG) for the Linux machine and configure it to deny ICMP requests. If we want to allow ICMP traffic again, we can modify the settings in the Network Security Group section on the Azure portal.</p>
 <br />
 <img src="https://i.imgur.com/5vXO75R.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
@@ -73,6 +74,5 @@ Lastly we will filter for RDP traffic. When we enter tcp.port==3389 traffic is s
 <p>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
+
 <br />
