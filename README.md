@@ -48,8 +48,9 @@ To block ICMP traffic, we will create a new Network Security Group (NSG) for the
 </p>
 <img src="https://i.imgur.com/Asl80tN.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <p>
-Next we will use our Windows machine to SSH to the Linux machine. SSH has no GUI it just gives the user access to the machines CLI. We will set the wireshark filter to capture SSH packets only. When we ssh into the Linux machine with the command prompt "ssh labuser@10.0.0.5" we can see that wireshark starts to immediately capture SSH packets.
-</p>
+Next, we will use the Windows machine to establish an SSH connection to the Linux machine. SSH does not provide a graphical interface; instead, it grants access to the machine’s command-line interface (CLI).  
+
+Before connecting, we will set the Wireshark filter to capture only SSH packets. Then, using the command prompt, we will initiate the SSH connection with the command `ssh labuser@10.0.0.5`. As soon as the connection is made, Wireshark will begin capturing SSH packet activity in real time.</p>
 <br />
 <img src="https://i.imgur.com/zteR41r.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
